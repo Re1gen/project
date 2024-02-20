@@ -21,15 +21,49 @@ const maxParentHeight = parentBlock.offsetHeight - childBlock.offsetHeight;
 const maxParentWidth = parentBlock.offsetWidth - childBlock.offsetWidth;
 
 const moveChild = () => {
-    if (positionX < maxParentHeight) {
+    if (positionY < maxParentHeight && positionX === 0) {
+        positionY++;
+        childBlock.style.top = `${positionY}px`;
+    } else if (positionX < maxParentWidth && positionY === maxParentHeight) {
         positionX++;
-        childBlock.style.left = `${positionX}px`
-        requestAnimationFrame(moveChild)
+        childBlock.style.left = `${positionX}px`;
+    } else if (positionY > 0 && positionX === maxParentWidth) {
+        positionY--;
+        childBlock.style.top = `${positionY}px`;
+    } else if (positionX > 0 && positionY === 0) {
+        positionX--;
+        childBlock.style.left = `${positionX}px`;
     }
+    setTimeout(moveChild, 1)
 }
 
 
 moveChild();
 
 //HOMEWORK2 PART 2
+const startButton = document.querySelector("#start")
+const stopButton = document.querySelector("#stop")
+const resetButton = document.querySelector("#reset")
+let time = document.querySelector("#seconds")
+let interval = 0;
+let seconds = 0;
 
+const start = () =>{
+    clearInterval(interval)
+        interval = setInterval(() =>{
+        seconds++
+        time.innerHTML = seconds;
+        }, 1000)
+}
+startButton.addEventListener("click", start)
+const stop = () =>{
+    clearInterval(interval)
+}
+stopButton.addEventListener("click", stop)
+
+const reset = () =>{
+    clearInterval(interval)
+    seconds = 0;
+    time.innerHTML = seconds;
+}
+resetButton.addEventListener("click", reset)
