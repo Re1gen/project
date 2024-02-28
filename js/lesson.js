@@ -50,12 +50,51 @@ const autoTabSlider = (i = 0) => {
         if (i > tabs.length - 1) {
             i = 0;
         }
-        
+
         hideTabContents();
         showTabContents(i);
-    }, 4000);
+    }, 3000);
 };
 autoTabSlider();
 
+//Converter
+const somInput = document.querySelector("#som");
+const usdInput = document.querySelector("#usd");
+const eurInput = document.querySelector("#eur");
 
+const converter = (element, targetElement,secTargetElement, current) =>{
+    element.oninput = () =>{
+        const request = new XMLHttpRequest()
+        request.open("GET", "../data/converter.json")
+        request.setRequestHeader("Content-type", "application/json")
+        request.send()
 
+        request.onload = () =>{
+            const data = JSON.parse(request.response)
+            switch (current){
+                case 'som':
+                    targetElement.value = (element.value /data.usd).toFixed(2)
+                    secTargetElement.value = (element.value /data.eur).toFixed(2)
+
+                    break;
+                case 'usd':
+                    targetElement.value = (element.value * data.usd).toFixed(2)
+                    secTargetElement.value = (element.value * data.usdToEur).toFixed(2)
+                    break;
+                case 'eur':
+                    targetElement.value = (element.value * data.eur).toFixed(2)
+                    secTargetElement.value = (element.value / data.usdToEur).toFixed(2)
+                    break;
+                default:
+                    break;
+            }
+            if (element.value === ''){
+                targetElement.value = ""
+                secTargetElement.value = ""
+            }
+        }
+    }
+}
+converter(somInput, usdInput,eurInput, "som")
+converter(usdInput, somInput, eurInput, "usd")
+converter(eurInput, somInput, usdInput, "eur")
