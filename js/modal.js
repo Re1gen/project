@@ -35,3 +35,37 @@ const thenOpenModal = () =>{
     }, 10000);
 }
 thenOpenModal();
+
+//POst data
+const formElement = document.querySelector("form")
+const postData = (url, dataJson) =>{
+    const response = fetch(url, {
+        method: "POST",
+        headers: {"Content-type" : "application/json"},
+        body: dataJson
+        })
+}
+
+const bindPostData = (form) =>{
+    form.onsubmit = (event) =>{
+        event.preventDefault()
+        const formData = new FormData(form)
+        const user = {}
+        formData.forEach((item, index) =>{
+            user[index] = item
+        })
+        const json = JSON.stringify(user)
+        postData("server.php", json)
+    }
+}
+bindPostData(formElement)
+// const postData = (form) =>{
+//     form.addEventListener("submit", (event) =>{
+//         event.preventDefault()
+//
+//         const request = new XMLHttpRequest()
+//         request.open("POST", "server.php")
+//         request.setRequestHeader("Content-type", "application/json")
+//     })
+// }
+// postData(formElement)
