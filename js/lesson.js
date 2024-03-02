@@ -62,20 +62,18 @@ const somInput = document.querySelector("#som");
 const usdInput = document.querySelector("#usd");
 const eurInput = document.querySelector("#eur");
 
-const converter = (element, targetElement,secTargetElement, current) =>{
+const converter =  (element, targetElement,secTargetElement, current) =>{
     element.oninput = () =>{
-        const request = new XMLHttpRequest()
-        request.open("GET", "../data/converter.json")
-        request.setRequestHeader("Content-type", "application/json")
-        request.send()
-
+        const request = new XMLHttpRequest();
+        request.open("GET", "../data/converter.json");
+        request.setRequestHeader("Content-type", "application/json");
+        request.send();
         request.onload = () =>{
             const data = JSON.parse(request.response)
             switch (current){
                 case 'som':
                     targetElement.value = (element.value /data.usd).toFixed(2)
                     secTargetElement.value = (element.value /data.eur).toFixed(2)
-
                     break;
                 case 'usd':
                     targetElement.value = (element.value * data.usd).toFixed(2)
@@ -93,32 +91,32 @@ const converter = (element, targetElement,secTargetElement, current) =>{
                 secTargetElement.value = ""
             }
         }
+
     }
 }
 converter(somInput, usdInput,eurInput, "som")
 converter(usdInput, somInput, eurInput, "usd")
 converter(eurInput, somInput, usdInput, "eur")
-
 //Card Switcher
 const btnPrev = document.querySelector("#btn-prev")
 const btnNext = document.querySelector("#btn-next")
 const cardBlock = document.querySelector(".card")
 let count = 1
-const dataType = () =>{
-    fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
-        .then(response =>response.json())
-        .then(data =>{
-            cardBlock.style.boxShadow = `2px 2px 2px 2px ${data.completed ? "rgb(34,255,0)": "rgb(201,52,52)"}`
-            cardBlock.innerHTML = `
+const dataType = async () =>{
+    try{
+        const response = await fetch(`https://jsonplaceholder.typicode.com/todos/${count}`)
+        const data = await response.json()
+        cardBlock.style.borderColor = ` ${data.completed ? "rgb(34,255,0)": "rgb(201,52,52)"}`
+        cardBlock.innerHTML = `
                 <p>${data.title}</p>
                 <p style="color: ${data.completed ? "green" : "red"}">
                     ${data.completed}
                 </p>
                 <span>id: ${data.id}</span>
                 `
-
-
-        })
+    }catch (error){
+        console.log(error)
+    }
 }
 dataType()
 btnNext.onclick = () =>{
@@ -135,3 +133,25 @@ btnPrev.onclick = () =>{
     dataType()
 }
 
+//Weather
+
+const cityInput = document.querySelector(".cityName")
+const citySpan = document.querySelector(".city")
+const tempSpan = document.querySelector(".temp")
+const api_key = 'e417df62e04d3b1b111abeab19cea714'
+const baseUrl = 'http://api.openweathermap.org'
+const searchCity = () =>{
+    cityInput.oninput = async (event) =>{
+        try {
+            const response = await fetch(`${baseUrl}/data/2.5/weather?q=${event.target.value}&appid=${api_key}`)
+            const data = await response.json()
+            citySpan.innerHTML = data.name ? data.name: "Город не найден"
+            tempSpan.innerHTML = data.main?.temp ? Math.round(data.main?.temp - 273) + '&deg;C' : "&#9785"
+        }catch (error){
+            console.log(error)
+        }
+
+    }
+}
+
+searchCity()

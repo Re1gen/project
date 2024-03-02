@@ -5,10 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="86de7975-0efe-41aa-ae94-19c7245f42f3" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/js lesson/ind.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/js lesson/lesson6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DZ-6-PART 2/IN.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/DZ-6-PART 2/dz-6.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/css/cards.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js lesson/lesson7.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/js/cards.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/pages/cards.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/photo/acdc-red-logo-metal-pin-badge.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/js lesson/ind.html" beforeDir="false" afterPath="$PROJECT_DIR$/js lesson/ind.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/lesson.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/lesson.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/js/modal.js" beforeDir="false" afterPath="$PROJECT_DIR$/js/modal.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pages/lessons.html" beforeDir="false" afterPath="$PROJECT_DIR$/pages/lessons.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,9 +26,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
-        <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -62,6 +70,11 @@
     &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
 }</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\djuma\Downloads\project1\project\photo" />
+    </key>
+  </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
@@ -113,7 +126,9 @@
       <workItem from="1708840419752" duration="621000" />
       <workItem from="1708957908217" duration="7175000" />
       <workItem from="1709176127458" duration="3299000" />
-      <workItem from="1709271313482" duration="11518000" />
+      <workItem from="1709271313482" duration="20658000" />
+      <workItem from="1709314618989" duration="480000" />
+      <workItem from="1709315123369" duration="6941000" />
     </task>
     <servers />
   </component>
