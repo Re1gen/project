@@ -20,5 +20,6 @@ body{
     background-image: url("../photo/acdc-red-logo-metal-pin-badge.jpg");
     background-position: center;
     background-repeat: no-repeat;
+    background-size: cover;
 
 }
